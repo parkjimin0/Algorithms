@@ -14,7 +14,7 @@ class SinglyLinkedList {
     let newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
+      // this.tail = newNode;
     } else {
       newNode.next = this.head;
       this.head = newNode;
@@ -25,7 +25,7 @@ class SinglyLinkedList {
     let newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
+      // this.tail = newNode;
     } else {
       let currentNode = this.head;
       while (currentNode.next) {
@@ -35,5 +35,39 @@ class SinglyLinkedList {
     }
   }
 
-  
+  removeHead() {
+    let oldHead = this.head;
+    let newHead = this.head.next;
+    if (!this.head.next) {
+      this.head = null;
+      return oldHead;
+    } else {
+      this.head.next = newHead.next;
+      this.head = newHead;
+      return oldHead;
+    }
+  }
+
+  remove(val) {
+    if (this.head.value === val) {
+      this.removeHead();
+    } else {
+      let currentNode = this.head;
+      let previous = currentNode;
+      while (currentNode.next) {
+        if (currentNode.value === val) {
+          previous.next = currentNode.next;
+          return currentNode;
+        } else {
+          previous = currentNode;
+          currentNode = currentNode.next;
+        }
+      }
+
+      if (currentNode.value === val) {
+        previous.next = null;
+        return currentNode;
+      }
+    }
+  }
 }
