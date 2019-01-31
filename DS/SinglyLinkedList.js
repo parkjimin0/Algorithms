@@ -14,7 +14,6 @@ class SinglyLinkedList {
     let newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
-      // this.tail = newNode;
     } else {
       newNode.next = this.head;
       this.head = newNode;
@@ -25,7 +24,7 @@ class SinglyLinkedList {
     let newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
-      // this.tail = newNode;
+
     } else {
       let currentNode = this.head;
       while (currentNode.next) {
